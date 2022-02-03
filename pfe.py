@@ -27,7 +27,7 @@ time.sleep(1)
 sound_demarrage.play()
 time.sleep(1)
 #While de l'algo
-while xixi<3 :
+while xixi<360 :
     #libcamera-still -o  /home/pi/EntrainerTiny/captures/test%d.jpg -t 1 --timelapse 10000 --vflip --hflip --tuning-file /usr/share/libcamera/ipa/raspberrypi/imx219_noir.json
 #Caméra avec flip vertical et horizontal, correction des couleurs de l'image,     
     os.system("libcamera-jpeg -o  /home/pi/EntrainerTiny2/captures/test"+str(xixi)+".jpg -t 1 --vflip --hflip --tuning-file /usr/share/libcamera/ipa/raspberrypi/imx219_noir.json --heigh 1900 --width 1080")
@@ -55,12 +55,12 @@ while xixi<3 :
 # Cas où seul 1 feu est détecté sur l'image avec une probabilité suffisante
     elif len(x)==8:
       v1=re.split("[xy_\b\W\b]+", x[7],flags=re.IGNORECASE)
-      if int(v1[2])>40 and v1[1]=="rouge":
+      if int(v1[2])>50 and v1[1]=="rouge":
         sound_rouge.play()
         time.sleep(1)
         print("rouge")
         calm=0
-      elif int(v1[2])>40 and v1[1]=="vert":
+      elif int(v1[2])>50 and v1[1]=="vert":
         sound_bell.play()
         time.sleep(0.15)
         sound_vert.play()
@@ -92,7 +92,7 @@ while xixi<3 :
           time.sleep(1)
           print("rouge")
           calm=0
-      elif lstpercent[-1]>40 and lstclass[indexmax]==1 and lstpercent[-1] - lstpercent[-2] >10 and compare == False :
+      elif lstpercent[-1]>50 and lstclass[indexmax]==1 and lstpercent[-1] - lstpercent[-2] >10 and compare == False :
           sound_bell.play()
           time.sleep(0.15)
           sound_vert.play()
